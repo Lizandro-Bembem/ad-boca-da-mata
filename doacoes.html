@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0A1F44">
+    <title>Doações | Assembleia de Deus Boca da Mata</title>
+    <meta name="description" content="Faça a sua doação para o Departamento de Missões ou Ação Social da Assembleia de Deus Boca da Mata.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<header class="topo" id="topo">
+    <a class="marca" href="index.html"><span>AD</span> Boca da Mata</a>
+    <button class="menu-btn" aria-label="Abrir menu" aria-expanded="false"><i></i><i></i><i></i></button>
+    <nav class="menu" id="menu">
+        <a href="index.html">Início</a>
+        <a href="pastores.html">Pastores</a>
+        <a href="departamentos.html">Departamentos</a>
+        <a href="secretaria.html">Secretaria</a>
+        <a href="fotos.html">Fotos</a>
+        <a href="cultos.html">Dias de culto</a>
+        <a href="localizacao.html">Localização</a>
+        <a href="doacoes.html" class="ativo">Doações</a>
+    </nav>
+</header>
+<main id="conteudo">
+    <section class="cabeca">
+        <div class="miolo">
+            <h1 class="rev">Faça a sua Doação</h1>
+            <p class="rev">Contribua com a obra de Deus e com o nosso trabalho social.</p>
+        </div>
+    </section>
+
+    <section class="miolo bloco">
+        <div class="rev" style="max-width: 600px; margin: 0 auto; background: var(--gelo); padding: 2rem; border-radius: 18px;">
+            <h2 style="margin-top: 0; color: var(--marinho);">Quanto você gostaria de doar?</h2>
+
+            <!-- Opções de Valores Organizadas -->
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; margin-bottom: 1.5rem;">
+                <button type="button" class="btn-valor btn vazado" style="color: var(--marinho); border-color: var(--azul); padding: 0.5rem; font-size: 0.9rem;" data-valor="2,00">R$ 2,00</button>
+                <button type="button" class="btn-valor btn vazado" style="color: var(--marinho); border-color: var(--azul); padding: 0.5rem; font-size: 0.9rem;" data-valor="5,00">R$ 5,00</button>
+                <button type="button" class="btn-valor btn vazado" style="color: var(--marinho); border-color: var(--azul); padding: 0.5rem; font-size: 0.9rem;" data-valor="10,00">R$ 10,00</button>
+                <button type="button" class="btn-valor btn vazado" style="color: var(--marinho); border-color: var(--azul); padding: 0.5rem; font-size: 0.9rem;" data-valor="15,00">R$ 15,00</button>
+                <button type="button" class="btn-valor btn vazado" style="color: var(--marinho); border-color: var(--azul); padding: 0.5rem; font-size: 0.9rem;" data-valor="20,00">R$ 20,00</button>
+                <button type="button" class="btn-valor btn vazado" style="color: var(--marinho); border-color: var(--azul); padding: 0.5rem; font-size: 0.9rem;" data-valor="25,00">R$ 25,00</button>
+                <button type="button" class="btn-valor btn vazado" style="color: var(--marinho); border-color: var(--azul); padding: 0.5rem; font-size: 0.9rem;" data-valor="30,00">R$ 30,00</button>
+                <button type="button" class="btn-valor btn vazado" style="color: var(--marinho); border-color: var(--azul); padding: 0.5rem; font-size: 0.9rem;" data-valor="35,00">R$ 35,00</button>
+            </div>
+
+            <!-- Valor Personalizado -->
+            <div style="margin-bottom: 1.5rem;">
+                <label for="valorCustom" style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Ou digite aqui o valor que você deseja doar (R$):</label>
+                <input type="text" id="valorCustom" placeholder="Ex: 25,00" style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--claro); font-family: var(--fonte); font-size: 1rem;">
+            </div>
+
+            <!-- Escolha do Departamento -->
+            <div style="margin-bottom: 1.5rem;">
+                <label for="departamento" style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Para qual departamento vai a doação?</label>
+                <select id="departamento" style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--claro); font-family: var(--fonte); font-size: 1rem; background: #fff;">
+                    <option value="Departamento de Missões">Departamento de Missões</option>
+                    <option value="Departamento da Ação Social">Departamento da Ação Social</option>
+                </select>
+            </div>
+
+            <!-- Botão do WhatsApp -->
+            <button type="button" id="enviarDoacao" class="btn" style="width: 100%; text-align: center; cursor: pointer;">Doar via WhatsApp</button>
+        </div>
+    </section>
+</main>
+
+<footer class="rodape">
+    <div class="rodape-in">
+        <div><strong>Assembleia de Deus Boca da Mata</strong><p>Somos a nação Santa, povo adquirido, igreja unida, na comunhão, no partir do pão e nas orações, até o arrebatamento!</p></div>
+        <div><p>R. Ver. Zezéu Ribeiro, 2626 - Boca da Mata, Salvador - BA, 41347-000</p><p><a href="https://wa.me/5571981662704">WhatsApp: (71) 98166-2704</a></p><p><a href="https://www.instagram.com/adbocadamata" target="_blank" rel="noopener">Instagram: @adbocadamata</a></p></div>
+    </div>
+    <p class="copy">© <span id="ano"></span> Assembleia de Deus Boca da Mata. Todos os direitos reservados.</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+    let valorSelecionado = "";
+
+    document.querySelectorAll('.btn-valor').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.btn-valor').forEach(b => b.style.background = 'transparent');
+            document.querySelectorAll('.btn-valor').forEach(b => b.style.color = 'var(--marinho)');
+            btn.style.background = 'var(--azul)';
+            btn.style.color = '#fff';
+            valorSelecionado = btn.getAttribute('data-valor');
+            document.getElementById('valorCustom').value = '';
+        });
+    });
+
+    document.getElementById('enviarDoacao').addEventListener('click', () => {
+        let inputValor = document.getElementById('valorCustom').value.trim();
+        let valorTexto = inputValor || valorSelecionado;
+        let deptoEscolhido = document.getElementById('departamento').value;
+
+        if (!valorTexto) {
+            alert('Por favor, selecione ou digite um valor para a doação.');
+            return;
+        }
+
+        // Converte o valor digitado (ex: "5.000,00" ou "5000" ou "150,50") para número em formato padrão
+        let valorNumerico = parseFloat(
+            valorTexto.replace(/\./g, '').replace(',', '.')
+        );
+
+        if (isNaN(valorNumerico)) {
+            alert('Por favor, insira um valor numérico válido.');
+            return;
+        }
+
+        // Verifica se ultrapassa o limite máximo de R$ 5.000,00
+        if (valorNumerico > 5000) {
+            alert('O valor máximo permitido para doação online é de R$ 5.000,00.');
+            return;
+        }
+
+        let mensagem = `Olá, eu gostaria de fazer uma doação de R$${valorTexto} para o ${deptoEscolhido}`;
+        let urlWhatsApp = `https://wa.me/5571981662704?text=${encodeURIComponent(mensagem)}`;
+        window.open(urlWhatsApp, '_blank');
+    });
+
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('sw.js');
+        });
+    }
+</script>
+</body>
+</html>
