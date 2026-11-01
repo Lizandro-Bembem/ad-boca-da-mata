@@ -1,6 +1,6 @@
 :root{
-  --marinho:#0A1F44; --royal:#14418F; --azul:#2E6BD6; --claro:#8DB4F0; --gelo:#E8F0FC; --branco:#fff; --texto:#14223F;
-  --fonte:'Plus Jakarta Sans',system-ui,sans-serif;
+    --marinho:#0A1F44; --royal:#14418F; --azul:#2E6BD6; --claro:#8DB4F0; --gelo:#E8F0FC; --branco:#fff; --texto:#14223F;
+    --fonte:'Plus Jakarta Sans',system-ui,sans-serif;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -13,10 +13,8 @@ a{color:var(--azul)}
 .miolo{max-width:68rem;margin:0 auto;padding-left:1.5rem;padding-right:1.5rem}
 
 /* Topo */
-.topo{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 1.5rem;background:var(--marinho);transition:padding .3s,box-shadow .3s}
-.topo.pequeno{padding:.55rem 1.5rem;box-shadow:0 4px 18px rgba(0,0,0,.3)}
-.marca{color:#fff;text-decoration:none;font-weight:800;font-size:1.1rem}
-.marca span{background:var(--azul);padding:.15rem .5rem;border-radius:6px;margin-right:.3rem}
+.topo{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:.8rem 1.5rem;background:var(--marinho);transition:padding .3s,box-shadow .3s}
+.topo.pequeno{padding:.5rem 1.5rem;box-shadow:0 4px 18px rgba(0,0,0,.3)}
 .menu{display:flex;gap:1.6rem}
 .menu a{color:#CFE0FA;text-decoration:none;font-weight:600;position:relative;padding:.3rem 0}
 .menu a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--claro);transition:width .3s}
@@ -27,6 +25,11 @@ a{color:var(--azul)}
 .menu-btn[aria-expanded=true] i:nth-child(1){transform:translateY(8px) rotate(45deg)}
 .menu-btn[aria-expanded=true] i:nth-child(2){opacity:0}
 .menu-btn[aria-expanded=true] i:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+
+/* Marca (logo + nome no topo) */
+.marca{color:#fff;text-decoration:none;font-weight:800;font-size:1.1rem;display:flex;align-items:center;gap:.7rem;line-height:1}
+.marca img{height:40px;width:40px;max-width:none;flex:none;object-fit:contain;border-radius:8px}
+.topo.pequeno .marca img{height:34px;width:34px}
 
 /* Foto (com fundo azul caso a imagem não exista) */
 .foto{margin:0;border-radius:18px;overflow:hidden;background:linear-gradient(135deg,var(--royal),var(--azul));min-height:14rem}
@@ -103,18 +106,7 @@ h2{font-size:clamp(1.7rem,3.5vw,2.4rem);line-height:1.2;color:var(--marinho);mar
 .rev{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
 .rev.visivel{opacity:1;transform:none}
 
-@media (max-width:760px){
-  .menu-btn{display:block}
-  .menu{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--marinho);padding:.5rem 1.5rem 1.2rem}
-  .menu.aberto{display:flex;animation:entra .3s both}
-  .menu a{padding:.8rem 0}
-  .hero,.duas,.rodape-in{grid-template-columns:1fr}
-  .agenda li{grid-template-columns:1fr auto}.agenda b{grid-column:1/-1}
-}
-@media (prefers-reduced-motion:reduce){
-  *{animation:none!important;transition:none!important}.rev{opacity:1;transform:none}
-}
-/* Corrige o "Ver mais" cortado: todas as fotos viram quadrados iguais */
+/* Galeria: todas as fotos viram quadrados iguais */
 .galeria .item{aspect-ratio:1;position:relative;display:block;overflow:hidden;border-radius:18px}
 .galeria .item .foto{position:absolute;inset:0;height:100%;min-height:0;aspect-ratio:auto;border-radius:0}
 .galeria .item .foto img{width:100%;height:100%;object-fit:cover}
@@ -134,6 +126,7 @@ h2{font-size:clamp(1.7rem,3.5vw,2.4rem);line-height:1.2;color:var(--marinho);mar
 .lider .cargo{margin:.15rem 0 .6rem;color:var(--royal);font-weight:600}
 .lider .tel{display:inline-block;font-weight:700;text-decoration:none;color:#fff;background:var(--azul);padding:.35rem 1rem;border-radius:999px;font-size:.9rem}
 .lider .tel:hover{background:var(--marinho)}
+
 /* Cultos: a caixinha abre para baixo ao clicar */
 .agenda li.culto{display:block;padding:0;overflow:hidden}
 .culto-btn{width:100%;display:grid;grid-template-columns:10rem 1fr auto auto;gap:1rem;align-items:center;padding:1.1rem 1.2rem;border:0;background:transparent;font:inherit;color:inherit;text-align:left;cursor:pointer}
@@ -144,51 +137,24 @@ h2{font-size:clamp(1.7rem,3.5vw,2.4rem);line-height:1.2;color:var(--marinho);mar
 .culto-conteudo{overflow:hidden;visibility:hidden;transition:visibility .45s}
 .culto-painel.aberto .culto-conteudo{visibility:visible}
 .culto-conteudo p{margin:0;padding:1rem 1.2rem 1.3rem;border-top:1px solid #c5d6f2}
-@media (max-width:760px){
-  .culto-btn{grid-template-columns:1fr auto auto}
-  .culto-btn b{grid-column:1/-1}
-}
-/* Cultos: linha vira botão que se estende */
-.agenda li.culto{display:block;padding:0;overflow:hidden}
-.culto-btn{width:100%;display:grid;grid-template-columns:10rem 1fr auto auto;gap:1rem;align-items:center;padding:1.1rem 1.2rem;border:0;background:transparent;font:inherit;color:inherit;text-align:left;cursor:pointer}
-.culto-btn .seta{width:.65rem;height:.65rem;border-right:3px solid var(--royal);border-bottom:3px solid var(--royal);transform:rotate(45deg);transition:transform .45s}
-.culto-btn[aria-expanded="true"] .seta{transform:rotate(-135deg)}
-.culto-painel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s ease}
-.culto-painel.aberto{grid-template-rows:1fr}
-.culto-conteudo{overflow:hidden;visibility:hidden;transition:visibility .45s}
-.culto-painel.aberto .culto-conteudo{visibility:visible}
-.culto-conteudo p{margin:0;padding:.2rem 1.2rem 1.3rem;border-top:1px solid #c5d6f2;padding-top:1rem}
-@media (max-width:760px){
-  .culto-btn{grid-template-columns:1fr auto auto}
-  .culto-btn b{grid-column:1/-1}
-}/* Cultos: a caixinha abre para baixo ao clicar */
-.agenda li.culto{display:block;padding:0;overflow:hidden}
-.culto-btn{width:100%;display:grid;grid-template-columns:10rem 1fr auto auto;gap:1rem;align-items:center;padding:1.1rem 1.2rem;border:0;background:transparent;font:inherit;color:inherit;text-align:left;cursor:pointer}
-.culto-btn .seta{width:.65rem;height:.65rem;border-right:3px solid var(--royal);border-bottom:3px solid var(--royal);transform:rotate(45deg);transition:transform .45s}
-.culto-btn[aria-expanded="true"] .seta{transform:rotate(-135deg)}
-.culto-painel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s ease}
-.culto-painel.aberto{grid-template-rows:1fr}
-.culto-conteudo{overflow:hidden;visibility:hidden;transition:visibility .45s}
-.culto-painel.aberto .culto-conteudo{visibility:visible}
-.culto-conteudo p{margin:0;padding:1rem 1.2rem 1.3rem;border-top:1px solid #c5d6f2}
-@media (max-width:760px){
-  .culto-btn{grid-template-columns:1fr auto auto}
-  .culto-btn b{grid-column:1/-1}
-}
-/* Marca (Logo + Nome no Topo) */
-.marca {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 800;
-    font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-}
 
-.marca img {
-    height: 38px;       /* Altura proporcional para caber perfeitamente no topo */
-    width: auto;        /* Mantém a largura original sem esticar ou cortar */
-    object-fit: contain;
-    border-radius: 8px; /* Deixa os cantos da imagem arredondados */
+/* Localização */
+.loc{display:grid;grid-template-columns:1fr 1.4fr;gap:2.5rem;align-items:start}
+.loc-info{background:var(--gelo);border-radius:18px;padding:2rem}
+.loc-info h2{margin-top:0;font-size:1.6rem}
+.loc-info p{margin:.4rem 0 1rem}
+
+@media (max-width:760px){
+    .menu-btn{display:block}
+    .menu{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--marinho);padding:.5rem 1.5rem 1.2rem}
+    .menu.aberto{display:flex;animation:entra .3s both}
+    .menu a{padding:.8rem 0}
+    .marca{font-size:1rem}
+    .hero,.duas,.rodape-in,.loc{grid-template-columns:1fr}
+    .agenda li{grid-template-columns:1fr auto}.agenda b{grid-column:1/-1}
+    .culto-btn{grid-template-columns:1fr auto auto}
+    .culto-btn b{grid-column:1/-1}
+}
+@media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}.rev{opacity:1;transform:none}
 }
