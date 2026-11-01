@@ -183,13 +183,12 @@ h2{font-size:clamp(1.7rem,3.5vw,2.4rem);line-height:1.2;color:var(--marinho);mar
     font-size: 1.1rem;
     display: flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.8rem;
 }
 
 .marca img {
-    height: 40px;
-    width: 40px;
-    object-fit: cover;
-    border-radius: 12px; /* Deixa os cantos arredondados */
-    vertical-align: middle;
+    height: 38px;       /* Altura proporcional para caber perfeitamente no topo */
+    width: auto;        /* Mantém a largura original sem esticar ou cortar */
+    object-fit: contain;
+    border-radius: 8px; /* Deixa os cantos da imagem arredondados */
 }
