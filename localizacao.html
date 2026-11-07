@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0A1F44">
   <title>Localização | Assembleia de Deus Boca da Mata</title>
   <meta name="description" content="Como chegar à Assembleia de Deus Boca da Mata: endereço, mapa e contato.">
@@ -62,6 +62,45 @@
   </div>
   <p class="copy">© <span id="ano"></span> Assembleia de Deus Boca da Mata. Todos os direitos reservados.</p>
 </footer>
+<!-- ===== Navegação estilo aplicativo (aparece só no celular) ===== -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <symbol id="ic-inicio" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8M5 10v10h14V10M10 20v-6h4v6"/></symbol>
+  <symbol id="ic-cultos" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="ic-fotos" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="M21 16l-5-5-9 9"/></symbol>
+  <symbol id="ic-local" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="ic-pastores" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c.9-3.8 3.6-5.5 7-5.5s6.1 1.7 7 5.5"/></symbol>
+  <symbol id="ic-deptos" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.4"/><path d="M2.5 20c.9-3.4 3.4-4.9 6.5-4.9s5.6 1.5 6.5 4.9"/><circle cx="17.5" cy="9.5" r="2.5"/><path d="M16 15.2c2.4.3 4.4 1.6 5 4.3"/></symbol>
+  <symbol id="ic-secretaria" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></symbol>
+  <symbol id="ic-doacoes" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></symbol>
+  <symbol id="ic-mais" viewBox="0 0 24 24" fill="currentColor" stroke="none"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></symbol>
+  <symbol id="ic-instalar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11M7 9l5 5 5-5M4 20h16"/></symbol>
+  <symbol id="ic-fechar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+</svg>
+
+<nav class="bottom-nav" id="bottomNav" aria-label="Navegação principal">
+  <a class="bottom-nav-item" href="index.html" data-pagina="index.html"><svg class="icone-nav" aria-hidden="true"><use href="#ic-inicio"></use></svg><span>Início</span></a>
+  <a class="bottom-nav-item" href="cultos.html" data-pagina="cultos.html"><svg class="icone-nav" aria-hidden="true"><use href="#ic-cultos"></use></svg><span>Cultos</span></a>
+  <a class="bottom-nav-item" href="fotos.html" data-pagina="fotos.html"><svg class="icone-nav" aria-hidden="true"><use href="#ic-fotos"></use></svg><span>Fotos</span></a>
+  <a class="bottom-nav-item" href="localizacao.html" data-pagina="localizacao.html"><svg class="icone-nav" aria-hidden="true"><use href="#ic-local"></use></svg><span>Localização</span></a>
+  <button type="button" class="bottom-nav-item" id="btnTabMais" aria-haspopup="dialog" aria-expanded="false" aria-controls="folhaMais"><svg class="icone-nav" aria-hidden="true"><use href="#ic-mais"></use></svg><span>Mais</span></button>
+</nav>
+
+<div class="folha-fundo" id="folhaFundo"></div>
+<div class="folha" id="folhaMais" role="dialog" aria-modal="true" aria-label="Mais opções" aria-hidden="true">
+  <div class="folha-cab">
+    <strong>Mais opções</strong>
+    <button type="button" class="folha-fechar" id="btnFecharFolha" aria-label="Fechar"><svg class="icone-nav" aria-hidden="true"><use href="#ic-fechar"></use></svg></button>
+  </div>
+  <div class="folha-grade">
+    <a class="folha-item" href="pastores.html" data-pagina="pastores.html"><svg class="icone-nav" aria-hidden="true"><use href="#ic-pastores"></use></svg>Pastores</a>
+    <a class="folha-item" href="departamentos.html" data-pagina="departamentos.html"><svg class="icone-nav" aria-hidden="true"><use href="#ic-deptos"></use></svg>Departamentos</a>
+    <a class="folha-item" href="secretaria.html" data-pagina="secretaria.html"><svg class="icone-nav" aria-hidden="true"><use href="#ic-secretaria"></use></svg>Secretaria</a>
+    <a class="folha-item" href="doacoes.html" data-pagina="doacoes.html"><svg class="icone-nav" aria-hidden="true"><use href="#ic-doacoes"></use></svg>Doações</a>
+  </div>
+  <button type="button" class="folha-instalar" id="btnInstalarApp" hidden><svg class="icone-nav" aria-hidden="true"><use href="#ic-instalar"></use></svg>Instalar no celular</button>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <script src="script.js"></script>
 <script>
   if ('serviceWorker' in navigator) {

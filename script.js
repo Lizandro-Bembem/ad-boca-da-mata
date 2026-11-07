@@ -53,3 +53,79 @@ document.querySelectorAll('.culto-btn').forEach((botao) => {
     painel.classList.toggle('aberto', abrir);
   });
 });
+
+// ===== Celular: navegação inferior estilo aplicativo =====
+(() => {
+  const nav = document.getElementById('bottomNav');
+  if (!nav) return;
+
+  // Marca a página atual na barra inferior e no painel "Mais"
+  const atual = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  document.querySelectorAll('.bottom-nav-item[data-pagina], .folha-item[data-pagina]').forEach((el) => {
+    if (el.dataset.pagina === atual) {
+      el.classList.add('ativo');
+      el.setAttribute('aria-current', 'page');
+    }
+  });
+  const btnMais = document.getElementById('btnTabMais');
+  if (document.querySelector('.folha-item.ativo')) btnMais.classList.add('ativo');
+
+  // Painel "Mais" (sobe de baixo)
+  const folha = document.getElementById('folhaMais');
+  const fundo = document.getElementById('folhaFundo');
+  const fechar = document.getElementById('btnFecharFolha');
+  const abrirFolha = () => {
+    folha.classList.add('aberta');
+    fundo.classList.add('aberta');
+    folha.setAttribute('aria-hidden', 'false');
+    btnMais.setAttribute('aria-expanded', 'true');
+    fechar.focus();
+  };
+  const fecharFolha = () => {
+    if (!folha.classList.contains('aberta')) return;
+    folha.classList.remove('aberta');
+    fundo.classList.remove('aberta');
+    folha.setAttribute('aria-hidden', 'true');
+    btnMais.setAttribute('aria-expanded', 'false');
+    btnMais.focus();
+  };
+  btnMais.addEventListener('click', () => (folha.classList.contains('aberta') ? fecharFolha() : abrirFolha()));
+  fechar.addEventListener('click', fecharFolha);
+  fundo.addEventListener('click', fecharFolha);
+  document.addEventListener('keydown', (e) => e.key === 'Escape' && fecharFolha());
+
+  // Aviso rápido
+  const toast = document.getElementById('toast');
+  let tToast;
+  const avisar = (texto) => {
+    toast.textContent = texto;
+    toast.classList.add('mostrar');
+    clearTimeout(tToast);
+    tToast = setTimeout(() => toast.classList.remove('mostrar'), 5000);
+  };
+
+  // Instalar no celular
+  const btnInstalar = document.getElementById('btnInstalarApp');
+  const jaInstalado = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+  const ehIos = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  let eventoInstalar = null;
+  if (!jaInstalado && ehIos) btnInstalar.hidden = false;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    eventoInstalar = e;
+    if (!jaInstalado) btnInstalar.hidden = false;
+  });
+  window.addEventListener('appinstalled', () => { btnInstalar.hidden = true; eventoInstalar = null; });
+  btnInstalar.addEventListener('click', async () => {
+    if (eventoInstalar) {
+      eventoInstalar.prompt();
+      await eventoInstalar.userChoice;
+      eventoInstalar = null;
+      btnInstalar.hidden = true;
+      fecharFolha();
+    } else {
+      fecharFolha();
+      avisar('Toque no botão Compartilhar do navegador e escolha “Adicionar à Tela de Início”.');
+    }
+  });
+})();
