@@ -1,4 +1,5 @@
-const CACHE_NAME = 'ad-boca-da-mata-v3';
+const PREFIXO = 'ad-boca-da-mata-';
+const CACHE_NAME = PREFIXO + 'v4';
 const urlsToCache = [
     'index.html',
     'cultos.html',
@@ -10,14 +11,17 @@ const urlsToCache = [
     'pastores.html',
     'style.css',
     'script.js',
-    'manifest.json'
+    'manifest.json',
+    'img/icone-192.png',
+    'img/icone-512.png',
+    'img/apple-touch-icon.png'
 ];
 
 self.addEventListener('install', event => {
     self.skipWaiting();
     event.waitUntil(
         caches.open(CACHE_NAME)
-            .then(cache => cache.addAll(urlsToCache))
+            .then(cache => Promise.allSettled(urlsToCache.map(u => cache.add(u))))
     );
 });
 
@@ -25,7 +29,7 @@ self.addEventListener('install', event => {
 self.addEventListener('activate', event => {
     event.waitUntil(
         caches.keys()
-            .then(chaves => Promise.all(chaves.filter(c => c !== CACHE_NAME).map(c => caches.delete(c))))
+            .then(chaves => Promise.all(chaves.filter(c => c.startsWith(PREFIXO) && c !== CACHE_NAME).map(c => caches.delete(c))))
             .then(() => self.clients.claim())
     );
 });
